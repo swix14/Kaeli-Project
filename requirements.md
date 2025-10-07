@@ -1,4 +1,92 @@
-***Kaeli - Requisitos Funcionales***
-**Informacion del Equipo**
-- Proyecto: Kaeli - Tu asistente capaz de ahorrar en cada compra
+# Requerimientos del Proyecto SteamStorm
 
+## 1. Introducción
+Kaeli es una aplicación web que permite a los usuarios explorar los diversos productos de canasta basica obtenidos directamenta desde las paginas oficiales de los supermercados, poder comparar los distintos precios del mismo producto simultaneamente, buscar opciones alternas al producto que queremos, simular compras en un carrito, y recibir recomendaciones personalizadas a través de un asistente inteligente.  
+El sistema también cuenta con funcionalidades de administración para gestionar usuarios, reseñas y listas.
+
+---
+
+## 2. Requerimientos Funcionales
+
+### 2.1. Gestión de Usuarios
+- RF1: El sistema debe permitir el **registro de nuevos usuarios** mediante correo electrónico y contraseña.  
+- RF2: El sistema debe permitir a los usuarios **iniciar sesión**.  
+- RF3: El usuario debe poder **ver y editar su perfil**.  
+- RF4: El usuario debe poder **gestionar su lista de deseos**.  
+
+### 2.2. Gestión de Precios
+- RF5: El sistema debe obtener información de los precios de los productos via webscraping
+- RF6: El sistema debe mostrar informacion de cada producto (nombre, tipo, envase, marca).  
+- RF7: El sistema debe permitir buscar productos por nombre, tipo o precios.  
+
+### 2.3. Reseñas y Puntuaciones
+- RF8: El usuario debe poder **dejar una reseña** a cada producto.
+- RF9: El usuario debe poder votar (es util/no es util) en cada reseña del resto de usuarios.
+- RF10: El sistema debe **almacenar y mostrar reseñas** asociadas a cada productos.  
+ 
+### 2.4. Carrito de Compras (simulado)
+- RF11: El usuario debe poder **agregar productos al carrito de compras**.  
+- RF12: El sistema debe calcular el **total de la compra**.  
+
+### 2.5. Ofertas y Descuentos
+- RF13: El sistema debe aplicar los **descuentos** de la pagina web de los supermercados.  
+- RF14: El sistema debe permitir **ver las ofertas vigentes** con sus fechas de inicio y fin.  
+
+### 2.6. Asistente Inteligente
+- RF15: El sistema debe **una lista de compras** a los usuarios según sus preferencias y presupuesto.  
+- RF16: El asistente debe **responder preguntas básicas** sobre los productos.  
+- RF17: El asistente debe permitir **analizar las preferencias** del usuario para mejorar recomendaciones.  
+
+### 2.7. Administración
+- RF18: El administrador debe poder **gestionar usuarios** (crear, editar, eliminar).  
+- RF19: El administrador debe poder **gestionar videojuegos** (agregar, actualizar, eliminar).  
+- RF20: El administrador debe poder **gestionar reseñas** (aprobar, eliminar reportadas).  
+- RF21: El administrador debe poder **generar reportes** de actividad en la plataforma.  
+- RF22: El administrador debe poder **configurar parámetros del sistema**.  
+
+---
+
+## 3. Requerimientos No Funcionales
+
+### 3.1. Usabilidad
+- RNF1: La interfaz debe ser **intuitiva y fácil de usar** para cualquier usuario.  
+- RNF2: El sistema debe estar disponible en **idioma español**.  
+
+### 3.2. Rendimiento
+- RNF3: El sistema debe responder a consultas de productos en un **tiempo menor a 3 segundos**.  
+- RNF4: El sistema debe soportar al menos **100 usuarios concurrentes**.  
+
+### 3.3. Seguridad
+- RNF5: Las contraseñas deben almacenarse **encriptadas**.  
+- RNF6: Solo usuarios autenticados pueden dejar reseñas de productos.  
+- RNF7: Las sesiones deben expirar después de **30 minutos de inactividad**.  
+
+### 3.4. Compatibilidad
+- RNF8: El sistema debe ser accesible desde un **navegador web** en PC.  
+- RNF9: El sistema debe ser compatible con **Google Chrome y Mozilla Firefox**.  
+
+### 3.5. Mantenibilidad
+- RNF10: El código debe estar documentado con comentarios y seguir buenas prácticas.  
+- RNF11: El sistema debe estar diseñado en **arquitectura modular** para facilitar su expansión.  
+
+---
+
+## 4. Restricciones
+- El sistema depende de la disponibilidad de las paginas web de los supermercados para obtener la información de los productos.
+- El carrito de compras es una **simulación**: no se realizan transacciones reales.  
+- El Asistente IA será una versión inicial basada en reglas, no un modelo avanzado de machine learning.  
+
+---
+
+## 5. Priorización
+- **Alta prioridad:** Registro, inicio de sesión, comparar productos de 2 supermercados, reseñas, integración con webscraping.  
+- **Media prioridad:** Carrito, ofertas, recomendaciones básicas.  
+- **Baja prioridad:** Configuraciones avanzadas de administrador, precio historicos de los productos mostrados en un grafico.  
+
+---
+
+## 6. Futuras Mejoras  
+- Versión **móvil** de la aplicación.  
+- Asistente IA con **machine learning** para recomendaciones más precisas.  
+
+---
