@@ -1,7 +1,7 @@
-# Plan de Implementación - SteamStorm
+# Plan de Implementación - Kaeli
 
 ## 1. Objetivo
-Este documento describe el plan de implementación del proyecto **Kaeli**, una pagina web que utiliza webscraping para mostrar los diversos precios de de un mismo producto, reseñas de usuarios y recomendaciones personalizadas mediante un asistente inteligente.
+Este documento describe el plan de implementación del proyecto **Kaeli**, una página web que utiliza web scraping para mostrar los diversos precios de un mismo producto, reseñas de usuarios y recomendaciones personalizadas mediante un asistente inteligente.
 
 ---
 
@@ -10,7 +10,7 @@ Este documento describe el plan de implementación del proyecto **Kaeli**, una p
   - Gestiona plazos, organización y entregas.  
 - **Analista de Requisitos**: Sebastian Olguin  
   - Documenta casos de uso y requisitos.  
-- **Diseñador UML**: Seba Ayenao  
+- **Diseñador UML**: Sebastian Ayenao  
   - Crea y mantiene los diagramas de clases y casos de uso.  
 - **Planificador / Dev Lead**: Sebastian Olguin  
   - Asigna tareas y coordina el desarrollo.  
@@ -20,10 +20,12 @@ Este documento describe el plan de implementación del proyecto **Kaeli**, una p
 ---
 
 ## 3. Tecnologías
-- **Lenguaje principal**: JavaScript (Node.js + Express)  
+- **Lenguaje principal**: Python 3.10+ (Flask)
 - **Frontend**: HTML, CSS, JavaScript  
-- **API**: Steam Web API  
-- **Gestión de dependencias**: npm  
+- **Web Scraping**: BeautifulSoup4, Requests
+- **Base de Datos**: JSON (MVP)
+- **Autenticación**: Flask-JWT-Extended
+- **Gestión de dependencias**: pip (requirements.txt)
 - **Control de versiones**: Git + GitHub  
 - **Diagramas UML**: PlantUML / Draw.io  
 - **Documentación**: Markdown (.md)  
@@ -36,17 +38,20 @@ Este documento describe el plan de implementación del proyecto **Kaeli**, una p
 |---------------------------|----------------------------------|
 | Registrar usuario          | Usuario                        |
 | Iniciar sesión             | Usuario                        |
-| Buscar videojuegos         | Juego, SteamAPI                |
-| Comprar videojuegos        | Usuario, Carrito, Juego, Oferta|
-| Dejar reseña               | Usuario, Reseña, Juego         |
+| Buscar productos           | Producto, Comparador           |
+| Comparar precios           | Producto, Precio, Supermercado, Comparador |
+| Agregar al carrito         | Usuario, Carrito, Producto     |
+| Dejar reseña               | Usuario, Reseña, Producto      |
+| Votar reseña               | Usuario, Reseña                |
 | Ver perfil                 | Usuario                        |
-| Gestionar lista de deseos  | Usuario, Juego                 |
-| Recibir recomendaciones    | AsistenteIA, Usuario, Juego    |
-| Reportar problema          | Usuario, Administrador         |
+| Gestionar lista de deseos  | Usuario, Producto, ListaDeseos |
+| Ver ofertas                | Producto, Oferta, Supermercado |
+| Recibir recomendaciones    | AsistenteIA, Usuario, Producto |
+| Actualizar precios         | ScrapingService, Producto, Precio, Supermercado |
 | Gestionar usuarios         | Administrador, Usuario         |
-| Gestionar videojuegos      | Administrador, Juego           |
+| Gestionar productos        | Administrador, Producto        |
 | Gestionar reseñas          | Administrador, Reseña          |
-| Generar reportes           | Administrador, Ranking, Reseña |
+| Generar reportes           | Administrador, Usuario, Producto |
 | Configurar sistema         | Administrador                  |
 
 ---
@@ -61,23 +66,24 @@ Este documento describe el plan de implementación del proyecto **Kaeli**, una p
 
 ### 5.2. Fase 2 - Diseño (Oct 2025)
 - Elaborar **diagrama de clases** (classes.puml, .png).  
-- Definir estructura de base de datos (derivada de clases).  
-- Establecer convenciones de codificación.  
+- Definir estructura de base de datos JSON.  
+- Establecer convenciones de codificación (PEP 8).  
 
 ### 5.3. Fase 3 - Implementación Inicial (Nov 2025)
 - Implementar módulo de **usuarios** (registro, login).  
-- Integración básica con la **API de Steam**.  
-- Implementar **visualización de juegos y rankings**.  
+- Implementar **web scraping básico** de 2 supermercados.  
+- Implementar **búsqueda y comparación de precios**.  
 - Subir **primer prototipo funcional**.  
 
 ### 5.4. Fase 4 - Funcionalidades Avanzadas (Nov 2025)
-- Implementar **reseñas y puntuaciones**.  
+- Implementar **reseñas y sistema de votación**.  
 - Implementar **carrito de compras simulado**.  
+- Implementar **lista de deseos**.  
 - Implementar **ofertas y descuentos**.  
 - Implementar **asistente IA básico** para sugerencias.  
 
 ### 5.5. Fase 5 - Administración y QA (Nov 2025)
-- Implementar panel de **administración** (usuarios, reseñas, juegos).  
+- Implementar panel de **administración** (usuarios, productos, reseñas).  
 - Generación de reportes.  
 - Pruebas unitarias y de integración.  
 - Documentar criterios de aceptación.  
@@ -104,16 +110,16 @@ Este documento describe el plan de implementación del proyecto **Kaeli**, una p
 
 ## 7. Criterios de Aceptación
 - Los diagramas (clases y casos de uso) están completos y legibles.  
-- Todos los requisitos funcionales principales (registro, reseñas, ranking) están implementados.  
-- El sistema puede consultar juegos desde la API de Steam.  
+- Todos los requisitos funcionales principales (registro, comparación de precios, reseñas, carrito) están implementados.  
+- El sistema puede extraer precios reales mediante web scraping de al menos 2 supermercados.  
 - Existe documentación clara (README, requirements.md, implementation_plan.md).  
 - La presentación explica el diseño y plan de implementación en máximo 12 minutos.  
 
 ---
 
 ## 8. Riesgos y Mitigaciones
-- **API de Steam no disponible** → Preparar dataset local de respaldo.  
-- **Falta de tiempo en el equipo** → Priorizar funciones críticas (registro, ranking, reseñas).  
+- **Sitios web de supermercados cambian estructura** → Implementar scraping robusto con múltiples selectores y logs de errores.  
+- **Falta de tiempo en el equipo** → Priorizar funciones críticas (scraping, comparación, registro, carrito).  
 - **Problemas de integración** → Pruebas incrementales y commits frecuentes.  
 
 ---
@@ -125,5 +131,4 @@ Este documento describe el plan de implementación del proyecto **Kaeli**, una p
 - Documentar feedback recibido en revisión por pares.  
 
 ---
-
 
