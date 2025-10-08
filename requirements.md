@@ -39,7 +39,7 @@ El sistema también cuenta con funcionalidades de administración para gestionar
 
 ### Administración
 - RF18: El administrador debe poder **gestionar usuarios** (crear, editar, eliminar).  
-- RF19: El administrador debe poder **gestionar videojuegos** (agregar, actualizar, eliminar).  
+- RF19: El administrador debe poder **gestionar productos** (agregar, actualizar, eliminar).  
 - RF20: El administrador debe poder **gestionar reseñas** (aprobar, eliminar reportadas).  
 - RF21: El administrador debe poder **generar reportes** de actividad en la plataforma.  
 - RF22: El administrador debe poder **configurar parámetros del sistema**.  
