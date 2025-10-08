@@ -14,7 +14,7 @@ El sistema también cuenta con funcionalidades de administración para gestionar
 - RF03: El usuario debe poder **ver y editar su perfil**.  
 - RF04: El usuario debe poder **gestionar su lista de deseos**.  
 
-### 2.2. Gestión de Precios
+### Gestión de Precios
 - RF05: El sistema debe obtener información de los precios de los productos via webscraping
 - RF06: El sistema debe mostrar informacion de cada producto (nombre, tipo, envase, marca).  
 - RF07: El sistema debe permitir buscar productos por nombre, tipo o precios.  
